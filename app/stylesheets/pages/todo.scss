@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+
+
+.todo-container {
+  font-family: 'Lobster', cursive;
+  min-width: 650px;
+  border: 20px ridge;
+  border-color: blue;
+  width: 650px;
+  background-color: lightgray;
+  min-height: 100px;
+  margin: 0 auto;
+  margin-top: 10px;
+  
+
+  .title-row {
+    text-align: center;
+  }
+
+  .todo {
+    font-size: 24px;
+    padding: 12px 0px 0px 35px;
+    height: 55px;
+    color: blue;
+  }
+  .close{
+    padding-right: 35px;
+    color: blue;
+    
+  } 
+  .btn {
+    background-color: blue;
+    color: white;
+  }
+
+  h1 {
+    color: blue;
+  }
+}
