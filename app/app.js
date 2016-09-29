@@ -10,6 +10,7 @@ require('bootstrap');
 import './stylesheets/base.scss';
 import _ from 'underscore';
 import todoController from './pages/todo';
+import D3pageController from './pages/D3page';
 // import multimediaController from '.pages/multimedia';
 
 
@@ -29,9 +30,10 @@ $(function(){
   // which page are we on??
   if (window.location.pathname === '/pages/todo.html') {
     todoController.init();
-  } else if (window.location.pathname === '/pages/todo.html') {
+  } else if (window.location.pathname === '/pages/multimedia.html') {
     console.log('multimedia page started');
-
+  } else if (window.location.pathname === '/pages/D3page.html') {
+    D3pageController.init();
   }
   
 });
