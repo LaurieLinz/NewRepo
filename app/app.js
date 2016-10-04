@@ -1,4 +1,3 @@
-
 // base framework
 import $ from 'jquery';
 
@@ -38,5 +37,9 @@ $(function(){
   } else if (window.location.pathname === '/pages/threeExample.html') {
     threeExampleController.init();
   }
+
+  console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
+  console.log('Impressed yet? Hire me now! www.laurielinz.com');
+  console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
   
 });

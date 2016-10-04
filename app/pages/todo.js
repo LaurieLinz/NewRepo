@@ -12,7 +12,7 @@ var model = {
       database = savedData;
     } else {
       database = [];
-    }  
+    }
   },
   save: function(){
     var dataToSave = JSON.stringify(database);
@@ -89,6 +89,3 @@ var controller = {
 };
 
 module.exports = controller;
-
-
-

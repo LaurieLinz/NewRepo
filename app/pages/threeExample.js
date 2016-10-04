@@ -71,8 +71,6 @@ var app = {
       renderer.render( scene, camera );
     }
 
-
-
   }
 };
 

@@ -1,25 +1,9 @@
+# This is my Awesome Showcase
 
+Hi there!  Get to know me a bit better at [laurielinz.com](http://www.laurielinz.com), [GitHub](https://github.com/LaurieLinz), [LinkedIn](https://www.linkedin.com/in/lauralinz), or email me lalinz303@gmail.com.
 
-# To Use
+You can see this project hosted on [Heroku](https://turtle-paradise.herokuapp.com/).
 
-- Create a repo on Github
-- `git clone` that repo on your local computer
-- Copy the template files into the project folder
-- `git add .`
-- `git commit -m "copied template"`
-- `git push origin master`
+This is a collection of projects that I completed while learning JavaScript, I hope you enjoy them as much as I enjoyed making them.
 
-# To Launch
-
-- `npm install`
-- `npm start`
-
-# To Create Server
-
-- `heroku create`
-- `npm run prod`
-- `git add .`
-- `git commit -m "launching server"`
-- `git push heroku master`
-- `heroku open`
 
