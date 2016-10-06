@@ -17,6 +17,8 @@ import threeExampleController from './pages/threeExample';
 // on document load
 $(function(){
 
+
+// Kick off the app!
   console.log('%c App Started', 'color:green');
 
   // set default template settings
@@ -26,17 +28,22 @@ $(function(){
     escape:      /{{=([\s\S]+?)}}/g
   };
 
-  // Kick off the app!
-  // which page are we on??
-  if (window.location.pathname === '/pages/todo.html') {
+  // This is the Router: which page are we on??
+  switch(window.location.pathname){
+  case '/pages/todo.html': 
     todoController.init();
-  } else if (window.location.pathname === '/pages/multimedia.html') {
+    break;
+  case '/pages/multimedia.html': 
     console.log('multimedia page started');
-  } else if (window.location.pathname === '/pages/D3page.html') {
+    break;
+  case '/pages/D3page.html': 
     D3pageController.init();
-  } else if (window.location.pathname === '/pages/threeExample.html') {
+    break;
+  case '/pages/threeExample.html': 
     threeExampleController.init();
+    break;
   }
+
 
   console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
   console.log('Impressed yet? Hire me now! www.laurielinz.com');

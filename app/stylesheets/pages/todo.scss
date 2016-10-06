@@ -11,18 +11,26 @@
   min-height: 100px;
   margin: 0 auto;
   margin-top: 10px;
-  
-
   .title-row {
     text-align: center;
   }
+}
 
   .todo {
     font-size: 24px;
     padding: 12px 0px 0px 35px;
     height: 55px;
-    color: blue;
+    color: blue; 
+    background-color: #7467d4;
+    &.completed {
+      background-color: inherit;
+    }
+    &.completed .todo-title {
+      color: #7467d4;
+      text-decoration: line-through;
+    }
   }
+  
   .close{
     padding-right: 35px;
     color: blue;
@@ -36,4 +44,4 @@
   h1 {
     color: blue;
   }
-}
+
