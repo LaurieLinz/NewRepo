@@ -8,6 +8,7 @@ require('bootstrap');
 // // import our styles
 import './stylesheets/base.scss';
 import _ from 'underscore';
+import navbar from './components/navbar';
 import todoController from './pages/todo';
 import D3pageController from './pages/D3page';
 import threeExampleController from './pages/threeExample';
@@ -27,6 +28,9 @@ $(function(){
     interpolate: /{{-([\s\S]+?)}}/g,
     escape:      /{{=([\s\S]+?)}}/g
   };
+
+  //launch navbar
+  navbar.init();
 
   // This is the Router: which page are we on??
   switch(window.location.pathname){

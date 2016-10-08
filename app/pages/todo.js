@@ -30,18 +30,17 @@ var controller = {
   },
   renderTemplates: function(){
     // creates an empty array
-    var compiledTodos = [];
+    var compiledTodos = model.get().map(function(item, index) {
     // database is an array - see model
     //loop over each item in the database
-    model.get().forEach(function(item, index) {
+    
       // creates an id for the item that is the current index + 1 (zero indexed this is to be more human readable)
       // ID is required by the view
       item.id = index + 1;
       // use handlebars, step 2 use handlebars passing the data object to the template to render both
       // replace {{id}} with the item's id value
-      var renderedTodo = controller.compiledTemplate(item);
+      return controller.compiledTemplate(item);
       // add this rendered todo to our list of todos
-      compiledTodos.push(renderedTodo);
     }); // end of forEach
     // pass list of todos to the render function
     controller.render(compiledTodos);
