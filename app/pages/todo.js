@@ -57,11 +57,19 @@ var controller = {
   // add the event handler back we do this to prevent memory leak since the handeler will still be there but the item will be gone
   createEventHandlers: function() {
     controller.addButton.on('click', controller.addTodoHandler);
+    $('.add-input').on('keypress', controller.addTodoKeypress);
     $('input[type="checkbox"]').on('change', controller.checkedHandler);
     $('.close').on('click', controller.removeHandler);
     // edit button handler
     $('.edit').on('click', controller.editHandler);
   },
+
+  addTodoKeypress: function(event){
+    if (event.which === 13) {
+      controller.addTodoHandler(event);  
+    }
+  },
+
     //handler for edit button
   editHandler: function(event){
     // which item to edit??
