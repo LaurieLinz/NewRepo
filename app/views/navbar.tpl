@@ -1,4 +1,6 @@
-<ul>
+<ul><li>
+    <a href="/">Home</a>
+  </li>
   <li>
     <a href="/pages/todo.html">Todo App</a>
   </li>

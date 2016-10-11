@@ -1,5 +1,5 @@
 var $ = window.$;
-var Handlebars = window.Handlebars;
+import _ from 'underscore';
 import model from '../models/todoModel';
 import view from 'text!../views/todoItem.tpl';
 
@@ -8,9 +8,9 @@ var controller = {
     model.init();
     //cache a jquery selector
     controller.addButton = $('.btn-add');
-    // complie todo item template
-    controller.compiledTemplate = Handlebars.compile(view);
-    // render the todo item template
+    //compile template
+    controller.compiledTemplate = _.template(view);
+    // compile todo item template
     controller.renderTemplates();
   },
 
@@ -52,12 +52,51 @@ var controller = {
     controller.addButton.off();
     $('input[type="checkbox"]').off();
     $('.close').off();
+    $('.edit').off();
   },
   // add the event handler back we do this to prevent memory leak since the handeler will still be there but the item will be gone
   createEventHandlers: function() {
     controller.addButton.on('click', controller.addTodoHandler);
     $('input[type="checkbox"]').on('change', controller.checkedHandler);
     $('.close').on('click', controller.removeHandler);
+    // edit button handler
+    $('.edit').on('click', controller.editHandler);
+  },
+    //handler for edit button
+  editHandler: function(event){
+    // which item to edit??
+    var index = $(event.currentTarget).parent().parent().index();
+    var $item = $('.todo').eq(index);
+    //title text disappears
+    $item.find('.todo-title').addClass('hidden');
+    // text input appears
+    $item.find('.todo-title-edit').removeClass('hidden');
+    // edit button replaced by save button 
+    $item.find('.edit').addClass('hidden');
+    $item.find('.save').removeClass('hidden');
+    //make change when they click on save button
+    $item.find('.save').on('click', controller.updateTitle);
+    $item.find('.todo-title-edit input').on('keypress', controller.updateTitleKeypress);
+  },
+  // handler to update title on enter
+  updateTitleKeypress: function(event){
+    if (event.which === 13) {
+      // they hit enter
+      controller.updateTitle(event);
+    }  
+  },
+  //save edit button handler
+  updateTitle: function(event){
+    // which title
+    var index = $(event.currentTarget).parent().parent().index();
+    var $item = $('.todo').eq(index);
+    $item.find('.save').off();
+    $item.find('.todo-title-edit input').off();
+    var newTodoTitle = $item.find('.todo-title-edit input').val();
+    // update the database
+    model.get()[index].title = newTodoTitle;
+    model.save();
+    controller.renderTemplates();
   },
   //event handler for the close X button
   // deletes the todo
@@ -74,7 +113,7 @@ var controller = {
     // which checkbox?
     var index = $(event.currentTarget).parent().parent().index();
     // update the database
-    model.get()[index].completed = !model.get()[index].completed;
+    model.get()[index].complete = !model.get()[index].complete;
     model.save();
     controller.renderTemplates();
   },
@@ -83,7 +122,7 @@ var controller = {
   addTodoHandler: function() {
     //reads the input
     var newTitle = $('.add-input').val();
-    // if input is empy string just exit
+    // if input is empty string just exit
     if (newTitle === '') return;
     // model.get() returns the database
     // push adds an item to the database
