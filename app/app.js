@@ -12,6 +12,7 @@ import navbar from './components/navbar';
 import todoController from './pages/todo';
 import D3pageController from './pages/D3page';
 import threeExampleController from './pages/threeExample';
+import bbTodoController from './pages/bb_todo';
 // import multimediaController from '.pages/multimedia';
 
 
@@ -34,6 +35,9 @@ $(function(){
 
   // This is the Router: which page are we on??
   switch(window.location.pathname){
+  case '/pages/bb_todo.html': 
+    new bbTodoController();
+    break;
   case '/pages/todo.html': 
     todoController.init();
     break;
