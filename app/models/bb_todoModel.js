@@ -25,6 +25,12 @@ var model = Backbone.Model.extend({
       this.set('todos', todos);
       this.save();
     }
+  },
+  removeTodo: function(id) {
+    var todos = this.get('todos');
+    todos.splice(id, 1);
+    this.set('todos', todos);
+    this.save();
   }
 });
 
