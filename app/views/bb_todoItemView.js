@@ -9,6 +9,7 @@ var todoItemView = Backbone.View.extend({
     'click .edit': 'editHandler',
     'click .save': 'saveHandler',
     'change input[type="checkbox"]': 'checkboxHandler',
+    'keypress .todo-title-edit input': 'editKeypressHandler'
   },
   initialize: function(item, controller){
     // compile the template
@@ -30,7 +31,11 @@ var todoItemView = Backbone.View.extend({
     this.$el.find('.todo-title').addClass('hidden');
     this.$el.find('.todo-title-edit').removeClass('hidden'); 
   },
-
+  editKeypressHandler: function(event){
+    if (event.which === 13) {
+      this.saveHandler();
+    }
+  },
   saveHandler: function(){
     var newTitle = this.$el.find('.todo-title-edit input').val();
     this.controller.editTodo(this.id, newTitle);
