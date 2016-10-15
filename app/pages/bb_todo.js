@@ -42,7 +42,13 @@ var ControllerView = Backbone.View.extend({
   removeTodo: function(id) {
     if (id >= 0) {
       this.model.removeTodo(id);
-      this.render;
+      this.render();
+    }
+  },
+  editTodo: function(id, newTitle){
+    if (id >= 0) {
+      this.model.editTodo(id, newTitle);
+      this.render();
     }
   }
 });
