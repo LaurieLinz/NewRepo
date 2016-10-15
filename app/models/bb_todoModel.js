@@ -37,6 +37,13 @@ var model = Backbone.Model.extend({
     todos[id - 1].title = newTitle;
     this.set('todos', todos);
     this.save();
+  },
+  completeTodo: function(id){
+    var todos = this.get('todos');
+    var current = todos[id - 1].complete;
+    todos[id - 1].complete = (current === 0)? 1: 0;
+    this.set('todos', todos);
+    this.save();
   }
 });
 

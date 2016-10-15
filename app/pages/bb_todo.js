@@ -50,6 +50,12 @@ var ControllerView = Backbone.View.extend({
       this.model.editTodo(id, newTitle);
       this.render();
     }
+  },
+  changeComplete: function(id){
+    if (id >= 0) {
+      this.model.completeTodo(id);
+      this.render();
+    }
   }
 });
 
