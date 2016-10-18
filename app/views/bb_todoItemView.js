@@ -40,7 +40,6 @@ var todoItemView = Backbone.View.extend({
     var newTitle = this.$el.find('.todo-title-edit input').val();
     this.controller.editTodo(this.id, newTitle);
   },
-
   checkboxHandler: function(){
     this.controller.changeComplete(this.id);
   }

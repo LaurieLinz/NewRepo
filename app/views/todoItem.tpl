@@ -1,19 +1,19 @@
 <div class="todo 
-  {{ if(complete) { }}
+  <% if(complete) { %>
   completed
-  {{ } }}
+  <% } %>
   ">
-  <div class="col-sm-1">{{- id }}</div>
-  <div class="col-sm-7 todo-title">{{- title }}</div>
+  <div class="col-sm-1"><%- id %></div>
+  <div class="col-sm-7 todo-title"><%- title %></div>
   <div class="col-sm-7 todo-title-edit hidden">
-    <input type="text" value="{{- title }}"/>
+    <input type="text" value="<%- title %>"/>
   </div>
   <div class="col-sm-1">
-    {{ if(complete){ }}
+    <% if(complete){ %>
     <input type="checkbox" checked >
-    {{ } else { }}
+    <% } else { %>
     <input type="checkbox">
-    {{ } }} 
+    <% } %> 
   </div>
   <div class="col-sm-2">
     <button class="btn btn-default edit">Edit</button>

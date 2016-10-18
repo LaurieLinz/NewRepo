@@ -7,7 +7,6 @@ require('bootstrap');
 
 // // import our styles
 import './stylesheets/base.scss';
-import _ from 'underscore';
 import navbar from './components/navbar';
 import todoController from './pages/todo';
 import D3pageController from './pages/D3page';
@@ -22,13 +21,6 @@ $(function(){
 
 // Kick off the app!
   console.log('%c App Started', 'color:green');
-
-  // set default template settings
-  _.templateSettings = {
-    evaluate:    /{{([\s\S]+?)}}/g,
-    interpolate: /{{-([\s\S]+?)}}/g,
-    escape:      /{{=([\s\S]+?)}}/g
-  };
 
   //launch navbar
   navbar.init();
