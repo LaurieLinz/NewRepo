@@ -25,6 +25,7 @@ var model = Backbone.Model.extend({
       this.set('todos', todos);
       this.save();
     }
+<<<<<<< HEAD
   },
   removeTodo: function(id) {
     var todos = this.get('todos');
@@ -44,6 +45,8 @@ var model = Backbone.Model.extend({
     todos[id - 1].complete = (current === 0)? 1: 0;
     this.set('todos', todos);
     this.save();
+=======
+>>>>>>> c940cbd81139c7dd295b11756ecf3ca568369c65
   }
 });
 

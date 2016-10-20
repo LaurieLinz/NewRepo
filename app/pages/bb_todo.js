@@ -19,10 +19,16 @@ var ControllerView = Backbone.View.extend({
     // alert('You have ' + this.model.get('todos').length + ' todos!');
     var todos = this.model.get('todos');
     // render each todo item
+<<<<<<< HEAD
     var me = this;
     var renderedTodos = todos.map(function(item, index){
       item.id = index +1;
       var view = new bbTodoItemView(item, me);
+=======
+    var renderedTodos = todos.map(function(item, index){
+      item.id = index;
+      var view = new bbTodoItemView(item);
+>>>>>>> c940cbd81139c7dd295b11756ecf3ca568369c65
       return view.$el;
     });
     // puts all the todo items into the dom
@@ -38,6 +44,7 @@ var ControllerView = Backbone.View.extend({
     if (event.which === 13) {
       this.addTodo();
     }
+<<<<<<< HEAD
   },
   removeTodo: function(id) {
     if (id >= 0) {
@@ -56,6 +63,8 @@ var ControllerView = Backbone.View.extend({
       this.model.completeTodo(id);
       this.render();
     }
+=======
+>>>>>>> c940cbd81139c7dd295b11756ecf3ca568369c65
   }
 });
 

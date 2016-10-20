@@ -4,6 +4,7 @@ import itemTemplate from 'text!./todoItem.tpl';
 
 var todoItemView = Backbone.View.extend({
   tagName: 'div',
+<<<<<<< HEAD
   events: {
     'click .close': 'removeHandler',
     'click .edit': 'editHandler',
@@ -15,11 +16,17 @@ var todoItemView = Backbone.View.extend({
     // compile the template
     this.id = item.id;
     this.controller = controller;
+=======
+  events: {},
+  initialize: function(item){
+    // compile the template
+>>>>>>> c940cbd81139c7dd295b11756ecf3ca568369c65
     this.template = _.template(itemTemplate);
     this.render(item);
   },
   render: function(item){
     this.$el.html(this.template(item));
+<<<<<<< HEAD
   },
   removeHandler: function(){
     this.controller.removeTodo(this.id);
@@ -42,6 +49,8 @@ var todoItemView = Backbone.View.extend({
   },
   checkboxHandler: function(){
     this.controller.changeComplete(this.id);
+=======
+>>>>>>> c940cbd81139c7dd295b11756ecf3ca568369c65
   }
 });
 
