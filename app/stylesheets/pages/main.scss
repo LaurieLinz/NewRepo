@@ -2,7 +2,7 @@
 
 .header {
   width: 100%;
-  postion: relative;
+  postion: relative !important;
 }
 
 
@@ -55,5 +55,4 @@
 
 img {
   width: 50%;
-  padding-left: 2em;
 }
