@@ -4,6 +4,7 @@ import itemTemplate from 'text!./todoItem.tpl';
 
 var todoItemView = Backbone.View.extend({
   tagName: 'div',
+
   events: {
     'click .close': 'removeHandler',
     'click .edit': 'editHandler',
@@ -18,6 +19,7 @@ var todoItemView = Backbone.View.extend({
     this.template = _.template(itemTemplate);
     this.render(item);
   },
+
   render: function(item){
     this.$el.html(this.template(item));
   },

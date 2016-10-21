@@ -1,14 +1,12 @@
-// var $ = window.$;
 import Backbone from 'backbone';
-import bbTodoModel from '../models/bb_TodoModel';
+import bbTodoModel from '../models/bb_todoModel';
 import bbTodoItemView from '../views/bb_todoItemView';
 
 var ControllerView = Backbone.View.extend({
-  el:'.todo-container', // equal to the raw document node
+  el: '.todo-container',
   events: {
-    // event space object the function
     'click .btn-add': 'addTodo',
-    'keypress .add-input': 'addKeypress'
+    'keypress .add-input': 'addKeyPress'
   },
   model: new bbTodoModel(),
   initialize: function(){
@@ -16,16 +14,16 @@ var ControllerView = Backbone.View.extend({
     this.render();
   },
   render: function(){
-    // alert('You have ' + this.model.get('todos').length + ' todos!');
+    //alert('you have ' + this.model.get('todos').length + ' todos!');
     var todos = this.model.get('todos');
-    // render each todo item
-    var me = this;
+    // render each item
+    var that = this;
     var renderedTodos = todos.map(function(item, index){
-      item.id = index +1;
-      var view = new bbTodoItemView(item, me);
+      item.id = index + 1;
+      var view = new bbTodoItemView(item, that); 
       return view.$el;
     });
-    // puts all the todo items into the dom
+    // put all the todo items in to the dom
     this.$el.find('.todo-list').html(renderedTodos);
   },
   addTodo: function(){
@@ -34,12 +32,12 @@ var ControllerView = Backbone.View.extend({
     this.$el.find('.add-input').val('');
     this.render();
   },
-  addKeypress: function(event){
+  addKeyPress: function(event) {
     if (event.which === 13) {
       this.addTodo();
     }
   },
-  removeTodo: function(id) {
+  removeTodo: function(id){
     if (id >= 0) {
       this.model.removeTodo(id);
       this.render();
