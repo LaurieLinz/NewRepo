@@ -16,4 +16,7 @@
   <li>
     <a href="/pages/bb_todo.html">BackBoneTodo App</a>
   </li>
+  <li>
+    <a href="/pages/isomerExample.html">Fun Isomer Art</a>
+  </li>
 </ul>
