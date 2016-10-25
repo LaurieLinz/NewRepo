@@ -12,6 +12,7 @@ import todoController from './pages/todo';
 import D3pageController from './pages/D3page';
 import threeExampleController from './pages/threeExample';
 import bbTodoController from './pages/bb_todo';
+import photosearchController from './pages/photosearch';
 // import multimediaController from '.pages/multimedia';
 
 
@@ -41,6 +42,10 @@ $(function(){
     break;
   case '/pages/threeExample.html': 
     threeExampleController.init();
+    break;
+
+  case '/pages/photosearch.html': 
+    new photosearchController();
     break;
   }
 

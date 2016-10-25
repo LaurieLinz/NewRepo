@@ -19,4 +19,7 @@
   <li>
     <a href="/pages/isomerExample.html">Fun Isomer Art</a>
   </li>
+  <li>
+    <a href="/pages/photosearch.html">Photo Search</a>
+  </li>
 </ul>
