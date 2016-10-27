@@ -1,40 +1,29 @@
+
+
 import Backbone from 'backbone';
 import bbTodoModel from '../models/bb_todoModel';
-import bbTodoItemView from '../views/bb_todoItemView';
+import bbTodoView from '../views/bb_todoView';
 
-var ControllerView = Backbone.View.extend({
-  el: '.todo-container',
-  events: {
-    'click .btn-add': 'addTodo',
-    'keypress .add-input': 'addKeyPress'
-  },
+var Controller = Backbone.View.extend({
   model: new bbTodoModel(),
   initialize: function(){
     this.model.fetch();
     this.render();
   },
   render: function(){
-    //alert('you have ' + this.model.get('todos').length + ' todos!');
     var todos = this.model.get('todos');
-    // render each item
-    var that = this;
-    var renderedTodos = todos.map(function(item, index){
-      item.id = index + 1;
-      var view = new bbTodoItemView(item, that); 
-      return view.$el;
-    });
-    // put all the todo items in to the dom
-    this.$el.find('.todo-list').html(renderedTodos);
+    if (this.view !== undefined) {
+      this.view.removeHandlers();
+    }
+    this.view = new bbTodoView(todos, this);
   },
-  addTodo: function(){
-    var newTitle = this.$el.find('.add-input').val();
+  addTodo: function(newTitle){
     this.model.addTodo(newTitle);
-    this.$el.find('.add-input').val('');
     this.render();
   },
-  addKeyPress: function(event) {
+  addKeyPress: function(event, newTitle) {
     if (event.which === 13) {
-      this.addTodo();
+      this.addTodo(newTitle);
     }
   },
   removeTodo: function(id){
@@ -57,4 +46,4 @@ var ControllerView = Backbone.View.extend({
   }
 });
 
-module.exports = ControllerView;
+module.exports = Controller;
