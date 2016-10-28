@@ -7,8 +7,10 @@ import bbTodoView from '../views/bb_todoView';
 var Controller = Backbone.View.extend({
   model: new bbTodoModel(),
   initialize: function(){
-    this.model.fetch();
-    this.render();
+    var that = this;
+    this.model.fetch(function(){
+      that.render();
+    });
   },
   render: function(){
     var todos = this.model.get('todos');
@@ -23,7 +25,7 @@ var Controller = Backbone.View.extend({
   },
   addKeyPress: function(event, newTitle) {
     if (event.which === 13) {
-      this.addTodo(newTitle);
+  this.addTodo(newTitle);
     }
   },
   removeTodo: function(id){

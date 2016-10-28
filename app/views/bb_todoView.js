@@ -24,7 +24,7 @@ var TodoView = Backbone.View.extend({
   },
   removeHandlers: function(){
     this.$el.find('.btn-add').off();
-    this.$el.find('.add-input').off();
+    // this.$el.find('.add-input').off();
   },
   addTodo: function(){
     var newTitle = this.$el.find('.add-input').val();
