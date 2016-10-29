@@ -121,7 +121,7 @@ var controller = {
     // which checkbox?
     var index = $(event.currentTarget).parent().parent().index();
     // update the database
-    model.get()[index].complete = !model.get()[index].complete;
+    model.get()[index].completed = !model.get()[index].completed;
     model.save();
     controller.renderTemplates();
   },
@@ -136,7 +136,7 @@ var controller = {
     // push adds an item to the database
     model.get().push({
       title: newTitle,
-      complete: false
+      completed: false
     });
     // clear the text box
     $('.add-input').val('');

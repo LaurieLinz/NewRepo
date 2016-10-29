@@ -1,26 +1,40 @@
+var $ = window.$;
+
 import Backbone from 'backbone';
-import lscache from 'lscache';
 
 var model = Backbone.Model.extend({
   defaults: {
     todos: []
   },
-  fetch: function(){
-    var savedTodos = lscache.get('todos');
-    if (savedTodos !== null) {
-      this.set('todos', savedTodos);
-    }
+  fetch: function(callback){
+    var that = this;
+    $.ajax({
+      method: 'GET',
+      dataType: 'json',
+      url: '/api/todos',
+      success: function(todos){
+        that.set('todos', todos);
+        if (typeof callback === 'function') {
+          callback();
+        }
+      }
+    });
   },
   save: function (){
-    var todos = this.get('todos');
-    lscache.set('todos', todos);
+    $.ajax({
+      method: 'POST',
+      data: {
+        todos: JSON.stringify(this.get('todos'))
+      },
+      url: '/api/todos'
+    });
   },
   addTodo: function(newTitle){
     if (newTitle.length > 0) {
       var todos = this.get('todos');
       todos.push({
         title: newTitle,
-        complete: 0
+        completed: 0
       });
       this.set('todos', todos);
       this.save();
@@ -40,8 +54,8 @@ var model = Backbone.Model.extend({
   },
   completeTodo: function(id){
     var todos = this.get('todos');
-    var current = todos[id - 1].complete;
-    todos[id - 1].complete = (current === 0)? 1: 0;
+    var current = todos[id - 1].completed;
+    todos[id - 1].completed = (current === 0)? 1: 0;
     this.set('todos', todos);
     this.save();
   }

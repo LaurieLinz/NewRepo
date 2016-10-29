@@ -1,5 +1,5 @@
 
-
+// var $ = window.$;
 import Backbone from 'backbone';
 import bbTodoModel from '../models/bb_todoModel';
 import bbTodoView from '../views/bb_todoView';
@@ -7,20 +7,26 @@ import bbTodoView from '../views/bb_todoView';
 var Controller = Backbone.View.extend({
   model: new bbTodoModel(),
   initialize: function(){
-    this.model.fetch();
-    this.render();
+    // fetch will call render when done
+    var that = this;
+    this.model.fetch(function(){
+      that.render();
+    });
   },
   render: function(){
     var todos = this.model.get('todos');
-    new bbTodoView(todos, this);
+    if (this.view !== undefined) {
+      this.view.removeHandlers();
+    }
+    this.view = new bbTodoView(todos, this);
   },
   addTodo: function(newTitle){
     this.model.addTodo(newTitle);
     this.render();
   },
-  addKeyPress: function(event) {
+  addKeypress: function(event, newTitle){
     if (event.which === 13) {
-      this.addTodo();
+      this.addTodo(newTitle);
     }
   },
   removeTodo: function(id){

@@ -1,5 +1,5 @@
 <div class="todo 
-  <% if(complete) { %>
+  <% if(completed) { %>
   completed
   <% } %>
   ">
@@ -9,7 +9,7 @@
     <input type="text" value="<%- title %>"/>
   </div>
   <div class="col-sm-1">
-    <% if(complete){ %>
+    <% if(completed){ %>
     <input type="checkbox" checked >
     <% } else { %>
     <input type="checkbox">

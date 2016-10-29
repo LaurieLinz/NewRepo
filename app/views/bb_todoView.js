@@ -5,7 +5,8 @@ var TodoView = Backbone.View.extend({
   el: '.todo-container',
   events: {
     'click .btn-add': 'addTodo',
-    'keypress .add-input': 'addKeyPress'
+
+    // 'keypress .add-input': 'addKeyPress'
   },
   initialize: function(todos, controller){
     this.controller = controller;
@@ -22,12 +23,20 @@ var TodoView = Backbone.View.extend({
     // put all the todo items in to the dom
     this.$el.find('.todo-list').html(renderedTodos);
   },
+
+  removeHandlers: function(){
+    this.$el.find('.btn-add').off();
+    // this.$el.find('.add-input').off();
+  },
   addTodo: function(){
     var newTitle = this.$el.find('.add-input').val();
+    this.$el.find('.add-input').val('');
     this.controller.addTodo(newTitle);
   },
   addKeyPress: function(event) {
-    this.controller.addKeyPress(event);
+    var newTitle = this.$el.find('.add-input').val();
+    this.$el.find('.add-input').val('');
+    this.controller.addKeyPress(event, newTitle);
   },
   removeTodo: function(id){
     this.controller.removeTodo(id);
