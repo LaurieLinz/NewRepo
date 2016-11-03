@@ -12,7 +12,9 @@ import todoController from './pages/todo';
 import D3pageController from './pages/D3page';
 import threeExampleController from './pages/threeExample';
 import bbTodoController from './pages/bb_todo';
+import rTodoController from './pages/r_todo';
 import photosearchController from './pages/photosearch';
+import emailValidationController from './pages/emailValidation';
 // import multimediaController from '.pages/multimedia';
 
 
@@ -28,6 +30,9 @@ $(function(){
 
   // This is the Router: which page are we on??
   switch(window.location.pathname){
+  case '/pages/r_todo.html': 
+    new rTodoController();
+    break;
   case '/pages/bb_todo.html': 
     new bbTodoController();
     break;
@@ -43,9 +48,11 @@ $(function(){
   case '/pages/threeExample.html': 
     threeExampleController.init();
     break;
-
   case '/pages/photosearch.html': 
     new photosearchController();
+    break;
+  case '/pages/emailValidation.html': 
+    new emailValidationController();
     break;
   }
 
