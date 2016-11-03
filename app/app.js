@@ -52,7 +52,7 @@ $(function(){
     new photosearchController();
     break;
   case '/pages/emailValidation.html': 
-    new emailValidationController();
+    emailValidationController.init();
     break;
   }
 
