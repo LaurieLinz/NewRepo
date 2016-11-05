@@ -1,6 +1,9 @@
 import React from 'react';
 
 var ItemView = React.createClass({
+  getInitialState: function(){
+    return { editing: false };
+  },
   propTypes: {
     item: React.PropTypes.object.isRequired,
     controller: React.PropTypes.object.isRequired
@@ -13,10 +16,14 @@ var ItemView = React.createClass({
     return (
       <div className={baseClasses}>
         <div className="col-sm-1">{this.props.item.id}</div>
+        { this.state.editing !== true &&
         <div className="col-sm-7 todo-title">{this.props.item.title}</div>
-        <div className="col-sm-7 todo-title-edit hidden">
-          <input type="text" value={this.props.item.title} />
+        }
+        { this.state.editing === true && 
+        <div className="col-sm-7 todo-title-edit">
+          <input className="title-edit-input" type="text" defaultValue={this.props.item.title} />
         </div>
+        }
         <div className="col-sm-1">
           { this.props.item.completed === 1 &&
             <input type="checkbox" checked onChange={this.toggleCheckbox} />
@@ -26,11 +33,16 @@ var ItemView = React.createClass({
           }
         </div>
         <div className="col-sm-2">
-          <button className="btn btn-default edit">Edit</button>
-          <button className ="btn btn-primary save hidden">Save</button>
+
+          {this.state.editing !== true &&
+          <button className="btn btn-default edit" onClick={this.editTodo}>Edit</button>
+          }
+          { this.state.editing === true &&
+          <button className ="btn btn-primary save" onClick={this.saveTodo}>Save</button>
+          }
         </div>
         <div className="col-sm-1">
-          <button type="button" className="close" aria-label="Close">
+          <button type="button" className="close" aria-label="Close" onClick={this.removeTodo}>
             <span aria-hidden="true">&times;</span>
           </button>
         </div> 
@@ -39,7 +51,17 @@ var ItemView = React.createClass({
   },
   toggleCheckbox: function(){
     this.props.controller.changeComplete(this.props.item.id);
-    alert(123);
+  },
+  removeTodo: function(){
+    this.props.controller.removeTodo(this.props.item.id);
+  },
+  editTodo: function(){
+    this.setState({editing: true});
+  },
+  saveTodo: function(){
+    var newTitle = document.querySelector('.title-edit-input').value;
+    this.setState({editing: false});
+    this.props.controller.editTodo(this.props.item.id, newTitle);
   }
 });
 
