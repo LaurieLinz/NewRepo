@@ -19,10 +19,10 @@ var ItemView = React.createClass({
         </div>
         <div className="col-sm-1">
           { this.props.item.completed === 1 &&
-            <input type="checkbox" checked />
+            <input type="checkbox" checked onChange={this.toggleCheckbox} />
           } 
           { this.props.item.completed === 0 &&
-            <input type="checkbox"/>
+            <input type="checkbox" onChange={this.toggleCheckbox}/>
           }
         </div>
         <div className="col-sm-2">
@@ -36,6 +36,10 @@ var ItemView = React.createClass({
         </div> 
       </div>
     );
+  },
+  toggleCheckbox: function(){
+    this.props.controller.changeComplete(this.props.item.id);
+    alert(123);
   }
 });
 

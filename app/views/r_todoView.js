@@ -50,9 +50,6 @@ var TodoView = Backbone.View.extend({
   editTodo: function(id, newTitle){
     this.controller.editTodo(id, newTitle);
   },
-  changeComplete: function(id){
-    this.controller.changeComplete(id);
-  }
 });
 
 module.exports = TodoView;
