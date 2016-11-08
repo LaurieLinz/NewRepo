@@ -2,7 +2,9 @@
 // var $ = window.$;
 import Backbone from 'backbone';
 import rTodoModel from '../models/r_todoModel';
-import rTodoView from '../views/r_todoView';
+import TodoView from '../views/r_todoView';
+import ReactDOM from 'react-dom';
+import React from 'react';
 
 var Controller = Backbone.View.extend({
   model: new rTodoModel(),
@@ -15,10 +17,11 @@ var Controller = Backbone.View.extend({
   },
   render: function(){
     var todos = this.model.get('todos');
-    if (this.view !== undefined) {
-      this.view.removeHandlers();
-    }
-    this.view = new rTodoView(todos, this);
+
+    ReactDOM.render(
+      <TodoView todos={todos} controller={this} />,
+      document.querySelector('.todo-container')
+    );
   },
   addTodo: function(newTitle){
     this.model.addTodo(newTitle);
