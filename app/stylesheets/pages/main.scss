@@ -1,36 +1,42 @@
 @import url('https://fonts.googleapis.com/css?family=Amatic+SC:400,700');
 
 .header img {
-  width: 100%;
+  width: 100vw;
   position: relative;
   }
 
 .cards-container {  
-  width: 100%;    
-  height:300px;         
+  width: 98vw;    
+  height:17vw;         
   position: absolute;
   z-index: 2;
-  top: 690px;  
+  top: 49vw; 
+  display:flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center; 
  }
 
  .card {
   display: inline-block;
   position: relative;
-  margin: 10px auto;
-  width: 200px;
-  height: 200px;
+  margin: 1vw auto;
+  width: 15vw;
+  height: 15vw;
   z-index: 1;
  }
 
 .main {
   font-family: 'Amatic SC', cursive;
-  font-size: 60px;
+  font-size: 4.5vw;
   font-weight: bold;
   margin: 0 auto;
   color: red;
   position: absolute;
-  top: 120px;
-  left: 150px;
+  top: 9vw;
+  left: 9vw;
 }
 
 .inner_card {
@@ -62,15 +68,19 @@
 }
 
 .homepage-container img {
-  width: 100%;
+  width: 100vw;
 }
 
 .background {
   background-color: black;
-  opacity: 0.5;
-  height: 220px;
-  width: 100%;
+  opacity: 0.25;
+  height: 17vw;
+  width: 100vw;
   position: absolute;
+}
+
+.card_image {
+  filter: brightness(85%);
 }
 
 
