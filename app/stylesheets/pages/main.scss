@@ -82,6 +82,11 @@
 .card_image {
   filter: brightness(85%);
 }
+.next{
+  width: 100vw;
+  height: 100vw;
+  background-color: black;
+}
 
 @media (max-width: 600px) {
   .inner_card {
