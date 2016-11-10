@@ -83,6 +83,16 @@
   filter: brightness(85%);
 }
 
+@media (max-width: 600px) {
+  .inner_card {
+  transform: rotateY(180deg);
+  box-shadow: -5px 5px 5px #aaa;
+  }
+  .small {
+    display: none;
+  }
+}
+
 
 
 
