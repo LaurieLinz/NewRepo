@@ -14,6 +14,8 @@ var app = {
     var dotpos = x.lastIndexOf('.');
     if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) {
       document.getElementById('emailmsg').style.display='';
+    } else {
+      document.getElementById('thanks').style.display='';
     }
     return false;
   }
