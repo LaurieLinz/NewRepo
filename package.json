@@ -62,6 +62,7 @@
     "redux": "^3.0.5",
     "redux-thunk": "^2.0.1",
     "sass-loader": "^4.0.0",
+    "sketch": "0.2.0",
     "style-loader": "^0.13.0",
     "text-loader": "0.0.1",
     "three": "0.81.2",

@@ -15,6 +15,7 @@ import bbTodoController from './pages/bb_todo';
 import rTodoController from './pages/r_todo';
 import photosearchController from './pages/photosearch';
 import emailValidationController from './pages/emailValidation';
+import sketchController from './pages/sketch';
 // import multimediaController from '.pages/multimedia';
 
 
@@ -53,6 +54,9 @@ $(function(){
     break;
   case '/pages/emailValidation.html': 
     emailValidationController.init();
+    break;
+  case '/pages/sketch.html': 
+    sketchController.init();
     break;
   }
 

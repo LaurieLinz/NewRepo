@@ -23,9 +23,12 @@
     <a class="nav_button" href="/pages/isomerExample.html">Fun Isomer Art</a>
   </li>
   <li>
-    <a  class="nav_button"href="/pages/photosearch.html">Photo Search</a>
+    <a  class="nav_button" href="/pages/photosearch.html">Photo Search</a>
   </li>
   <li>
     <a class="nav_button" href="/pages/emailValidation.html">Email Validation</a>
+  </li>
+  <li>
+    <a class="nav_button" href="/pages/sketch.html">Sketch</a>
   </li>
 </ul>
