@@ -16,6 +16,7 @@ var app = {
       document.getElementById('emailmsg').style.display='';
     } else {
       document.getElementById('thanks').style.display='';
+      $('.input').val('').removeAttr('placeholder');
     }
     return false;
   }
