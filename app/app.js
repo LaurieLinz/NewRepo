@@ -16,6 +16,7 @@ import rTodoController from './pages/r_todo';
 import photosearchController from './pages/photosearch';
 import emailValidationController from './pages/emailValidation';
 import sketchController from './pages/sketch';
+import gameController from './pages/game';
 // import multimediaController from '.pages/multimedia';
 
 
@@ -57,6 +58,9 @@ $(function(){
     break;
   case '/pages/sketch.html': 
     sketchController.init();
+    break;
+  case '/pages/game.html': 
+    gameController.init();
     break;
   }
 

@@ -20,7 +20,7 @@
     <a class="nav_button" href="/pages/r_todo.html">React Todo App</a>
   </li>
   <li>
-    <a class="nav_button" href="/pages/isomerExample.html">Fun Isomer Art</a>
+    <a class="nav_button" href="/pages/game.html">Game</a>
   </li>
   <li>
     <a  class="nav_button" href="/pages/photosearch.html">Photo Search</a>
