@@ -22,9 +22,18 @@ var app = {
     var brickPadding = 10;
     var brickOffsetTop = 30;
     var brickOffsetLeft = 30;
+    var score = 0;
 
     document.addEventListener('keydown', keyDownHandler, false);
     document.addEventListener('keyup', keyUpHandler, false);
+    document.addEventListener('mousemove', mouseMoveHandler, false);
+
+    function mouseMoveHandler(e) {
+      var relativeX = e.clientX - canvas.offsetLeft;
+      if(relativeX > paddleWidth/2 && relativeX < canvas.width - paddleWidth/2) {
+        paddleX = relativeX - paddleWidth/2;
+      }
+    }
 
     function collisionDetection() {
       for (c = 0; c < brickColumnCount; c++) {
@@ -34,10 +43,21 @@ var app = {
             if (x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
               dy = -dy;
               b.status = 0;
+              score++;
+              if(score == brickRowCount*brickColumnCount) {
+                document.getElementById('win').style.display='';
+                app.gameLoop = clearInterval(app.gameLoop);
+              }
             }
           }
         }
       }
+    }
+
+    function drawScore() {
+      ctx.font = '16px Arial';
+      ctx.fillStyle = 'black';
+      ctx.fillText('Score: '+score, 8, 20);
     }
 
     var bricks = [];
@@ -71,7 +91,7 @@ var app = {
     function drawBall() {
       ctx.beginPath();
       ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
-      ctx.fillStyle = '#0095DD';
+      ctx.fillStyle = 'black';
       ctx.fill();
       ctx.closePath();
     }
@@ -79,7 +99,7 @@ var app = {
     function drawPaddle() {
       ctx.beginPath();
       ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
-      ctx.fillStyle = '#0095DD';
+      ctx.fillStyle = 'black';
       ctx.fill();
       ctx.closePath();
     }
@@ -94,7 +114,7 @@ var app = {
             bricks[c][r].y = brickY;
             ctx.beginPath();
             ctx.rect(brickX, brickY, brickWidth, brickHeight);
-            ctx.fillStyle = '#0095DD';
+            ctx.fillStyle = 'red';
             ctx.fill();
             ctx.closePath();
           }
@@ -107,6 +127,7 @@ var app = {
       drawBricks();
       drawBall();
       drawPaddle();
+      drawScore();
       collisionDetection();
 
       if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
@@ -117,8 +138,10 @@ var app = {
       } else if (y + dy > canvas.height - ballRadius) {
         if (x > paddleX && x < paddleX + paddleWidth) {
           dy = -dy;
-        } else {
-          alert('GAME OVER');
+        } 
+
+        else {
+          document.getElementById('lose').style.display='';
           app.gameLoop = clearInterval(app.gameLoop);
           // document.location.reload();
         }
@@ -133,7 +156,8 @@ var app = {
       x += dx;
       y += dy;
     }
-    app.gameLoop = setInterval(draw, 10);
+
+    app.gameLoop = setInterval(draw, 7);
   }
 };
 
