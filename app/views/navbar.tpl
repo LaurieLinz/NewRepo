@@ -2,9 +2,6 @@
     <a class="nav_button" href="/">Home</a>
   </li>
   <li>
-    <a class="nav_button" href="/pages/todo.html">Todo App</a>
-  </li>
-  <li>
     <a class="nav_button" href="/pages/multimedia.html">Multimedia</a>
   </li>
   <li>
