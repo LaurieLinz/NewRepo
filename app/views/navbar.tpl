@@ -25,7 +25,4 @@
   <li>
     <a class="nav_button" href="/pages/emailValidation.html">Email Validation</a>
   </li>
-  <li>
-    <a class="nav_button" href="/pages/sketch.html">Sketch</a>
-  </li>
 </ul>
